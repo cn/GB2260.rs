@@ -1,0 +1,8 @@
+[package]
+name = "generator"
+version = "0.1.0"
+authors = ["messense <messense@icloud.com>"]
+publish = false
+
+[dependencies]
+phf_codegen = "0.7"
