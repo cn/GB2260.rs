@@ -59,6 +59,17 @@ impl Division {
             false
         }
     }
+
+    pub fn county(&self) -> Option<&Division> {
+        if self.is_province() || self.is_prefecture() {
+            return None;
+        }
+        Some(self)
+    }
+
+    pub fn is_county(&self) -> bool {
+        self.county().is_some()
+    }
 }
 
 #[cfg(test)]
@@ -73,5 +84,22 @@ mod tests {
         assert_eq!(division.revision, "201607");
         assert!(division.is_province());
         assert!(!division.is_prefecture());
+        assert!(!division.is_county());
+
+        let division = Division::get("110100").unwrap();
+        assert_eq!(division.code, "110100");
+        assert_eq!(division.name, "市辖区");
+        assert_eq!(division.revision, "201607");
+        assert!(!division.is_province());
+        assert!(division.is_prefecture());
+        assert!(!division.is_county());
+
+        let division = Division::get("110101").unwrap();
+        assert_eq!(division.code, "110101");
+        assert_eq!(division.name, "东城区");
+        assert_eq!(division.revision, "201607");
+        assert!(!division.is_province());
+        assert!(!division.is_prefecture());
+        assert!(division.is_county());
     }
 }
