@@ -43,6 +43,22 @@ impl Division {
     pub fn is_province(&self) -> bool {
         *self == self.province()
     }
+
+    pub fn prefecture(&self) -> Option<Self> {
+        if self.is_province() {
+            return None;
+        }
+        let code = format!("{}00", &self.code[..4]);
+        Self::get_by_revision(&code, self.revision)
+    }
+
+    pub fn is_prefecture(&self) -> bool {
+        if let Some(pref) = self.prefecture() {
+            pref == *self
+        } else {
+            false
+        }
+    }
 }
 
 #[cfg(test)]
@@ -56,5 +72,6 @@ mod tests {
         assert_eq!(division.name, "北京市");
         assert_eq!(division.revision, "201607");
         assert!(division.is_province());
+        assert!(!division.is_prefecture());
     }
 }
