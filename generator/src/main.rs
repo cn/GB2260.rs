@@ -41,7 +41,7 @@ fn main() {
     let path: PathBuf = data_dir.into();
     let stats_codes = generate_by_dir(path.join("stats").as_path()).expect("generate from stats failed");
     let contrib_codes = generate_by_dir(path.join("contrib").as_path()).expect("generate from contrib failed");
-    print!("static DIVISIONS: phf::Map<&'static str, &'static phf::Map<&'static str, &'static str>> = ");
+    print!("pub static DIVISIONS: phf::Map<&'static str, &'static phf::Map<&'static str, &'static str>> = ");
     let mut map = phf_codegen::Map::new();
     for code in &stats_codes {
         let code_name = code.replace("-", "_");
