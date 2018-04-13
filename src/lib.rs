@@ -80,6 +80,18 @@ impl Division {
     pub fn is_county(&self) -> bool {
         self.county().is_some()
     }
+
+    pub fn stack(&self) -> Vec<Self> {
+        let mut res = Vec::with_capacity(3);
+        res.push(self.province());
+        if self.is_prefecture() || self.is_county() {
+            res.push(self.prefecture().unwrap());
+        }
+        if self.is_county() {
+            res.push(self.clone());
+        }
+        res
+    }
 }
 
 #[cfg(test)]
@@ -87,7 +99,7 @@ mod tests {
     use super::Division;
 
     #[test]
-    fn test_get() {
+    fn test_division() {
         let division = Division::get("110000").unwrap();
         assert_eq!(division.code, "110000");
         assert_eq!(division.name, "北京市");
@@ -95,6 +107,7 @@ mod tests {
         assert!(division.is_province());
         assert!(!division.is_prefecture());
         assert!(!division.is_county());
+        assert_eq!(division.stack().len(), 1);
 
         let division = Division::get("110100").unwrap();
         assert_eq!(division.code, "110100");
@@ -103,6 +116,7 @@ mod tests {
         assert!(!division.is_province());
         assert!(division.is_prefecture());
         assert!(!division.is_county());
+        assert_eq!(division.stack().len(), 2);
 
         let division = Division::get("110101").unwrap();
         assert_eq!(division.code, "110101");
@@ -111,5 +125,6 @@ mod tests {
         assert!(!division.is_province());
         assert!(!division.is_prefecture());
         assert!(division.is_county());
+        assert_eq!(division.stack().len(), 3);
     }
 }
