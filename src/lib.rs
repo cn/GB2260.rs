@@ -6,19 +6,25 @@ use data::DIVISIONS;
 
 const CURRENT_REVISION: &str = "201607";
 
+/// The administrative division
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Division {
+    /// The six-digit number of the specific administrative division
     pub code: &'static str,
+    /// The Chinese name of the specific administrative division
     pub name: &'static str,
+    /// The revision year (month)
     pub revision: &'static str,
 }
 
 impl Division {
 
+    /// Return the division of the given code
     pub fn get(code: &str) -> Option<Self> {
         Self::get_by_revision(code, CURRENT_REVISION)
     }
 
+    /// Return the division of the given code of the given revision
     pub fn get_by_revision(code: &str, revision: &str) -> Option<Self> {
         DIVISIONS.get_entry(revision).and_then(|(rev, data)| {
             data.get_entry(code).map(|(key, name)| {
@@ -31,10 +37,12 @@ impl Division {
         })
     }
 
+    /// List all revisions supported by GB2260
     pub fn revisions() -> Vec<&'static str> {
         DIVISIONS.keys().cloned().collect()
     }
 
+    /// Return province level division of current division
     pub fn province(&self) -> Self {
         let code = format!("{}0000", &self.code[..2]);
         Self::get_by_revision(&code, self.revision).unwrap()
@@ -44,6 +52,7 @@ impl Division {
         *self == self.province()
     }
 
+    /// Return prefecture level division of current division
     pub fn prefecture(&self) -> Option<Self> {
         if self.is_province() {
             return None;
@@ -60,6 +69,7 @@ impl Division {
         }
     }
 
+    /// Return county level division of current division
     pub fn county(&self) -> Option<&Division> {
         if self.is_province() || self.is_prefecture() {
             return None;
