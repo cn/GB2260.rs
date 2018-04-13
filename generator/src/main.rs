@@ -20,7 +20,7 @@ fn generate_by_dir(dir: &Path) -> io::Result<Vec<String>> {
         let mut reader = BufReader::new(file);
         print!("static DIVISIONS_{}: phf::Map<&'static str, &'static str> = ", code);
         let mut map = phf_codegen::Map::new();
-        for line in reader.lines() {
+        for line in reader.lines().skip(1) {
             let line = line?;
             let parts: Vec<&str> = line.split('\t').collect();
             let code = parts[2];
