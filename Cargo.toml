@@ -2,6 +2,7 @@
 name = "gb2260"
 version = "0.1.0"
 authors = ["messense <messense@icloud.com>"]
+exclude = ["data/**"]
 
 [dependencies]
 phf = "0.7"
