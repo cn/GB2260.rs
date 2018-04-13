@@ -7,7 +7,7 @@ keywords = ["chinese", "divisions"]
 license = "MIT"
 readme = "README.md"
 exclude = ["data/**"]
-repository = "https://github.com/messense/GB2260.rs"
+repository = "https://github.com/cn/GB2260.rs"
 
 [dependencies]
 phf = "0.7"
