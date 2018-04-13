@@ -2,7 +2,12 @@
 name = "gb2260"
 version = "0.1.0"
 authors = ["messense <messense@icloud.com>"]
+description = "The Rust implementation for looking up Chinese administrative divisions"
+keywords = ["chinese", "divisions"]
+license = "MIT"
+readme = "README.md"
 exclude = ["data/**"]
+repository = "https://github.com/messense/GB2260.rs"
 
 [dependencies]
 phf = "0.7"
