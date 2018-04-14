@@ -1,8 +1,8 @@
 # GB2260.rs
 
-[![Build Status](https://travis-ci.org/messense/GB2260.rs.svg)](https://travis-ci.org/messense/GB2260.rs)
+[![Build Status](https://travis-ci.org/cn/GB2260.rs.svg)](https://travis-ci.org/cn/GB2260.rs)
 [![Crates.io](https://img.shields.io/crates/v/gb2260.svg)](https://crates.io/crates/gb2260)
-[![codecov](https://codecov.io/gh/messense/GB2260.rs/branch/master/graph/badge.svg)](https://codecov.io/gh/messense/GB2260.rs)
+[![codecov](https://codecov.io/gh/cn/GB2260.rs/branch/master/graph/badge.svg)](https://codecov.io/gh/cn/GB2260.rs)
 [![docs.rs](https://docs.rs/gb2260/badge.svg)](https://docs.rs/gb2260/)
 
 The Rust implementation for looking up Chinese administrative divisions.
