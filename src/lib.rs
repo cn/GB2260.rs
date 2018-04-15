@@ -37,6 +37,32 @@ impl Division {
         })
     }
 
+    /// Searches administrative division by its code in all revision
+    pub fn search(code: &str) -> Option<Self> {
+        fn parse_rev_year(rev: &str) -> u32 {
+            let parts: Vec<&str> = rev.split('-').collect();
+            if parts.len() == 2 {
+                parts[1].parse().unwrap()
+            } else {
+                rev.parse().unwrap()
+            }
+        }
+
+        let mut revisions = Self::revisions();
+        revisions.sort_unstable_by(|a, b| {
+            let year_a = parse_rev_year(a);
+            let year_b = parse_rev_year(b);
+            year_b.cmp(&year_a)
+        });
+        for rev in revisions {
+            let division = Self::get_by_revision(code, rev);
+            if division.is_some() {
+                return division;
+            }
+        }
+        None
+    }
+
     /// List all revisions supported by GB2260
     pub fn revisions() -> Vec<&'static str> {
         DIVISIONS.keys().cloned().collect()
@@ -126,5 +152,9 @@ mod tests {
         assert!(!division.is_prefecture());
         assert!(division.is_county());
         assert_eq!(division.stack().len(), 3);
+
+        let division_search = Division::search("110000").unwrap();
+        let division_get = Division::get("110000").unwrap();
+        assert_eq!(division_search, division_get);
     }
 }
