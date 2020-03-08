@@ -5,4 +5,4 @@ authors = ["messense <messense@icloud.com>"]
 publish = false
 
 [dependencies]
-phf_codegen = "0.7"
+phf_codegen = "0.8"

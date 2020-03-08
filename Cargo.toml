@@ -10,7 +10,7 @@ exclude = ["data/**"]
 repository = "https://github.com/cn/GB2260.rs"
 
 [dependencies]
-phf = "0.7"
+phf = "0.8"
 
 [badges]
 travis-ci = { repository = "cn/GB2260.rs" }
