@@ -1,6 +1,6 @@
 [package]
 name = "gb2260"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["messense <messense@icloud.com>"]
 description = "The Rust implementation for looking up Chinese administrative divisions"
 keywords = ["chinese", "divisions"]
