@@ -4,7 +4,7 @@ mod data;
 
 use data::DIVISIONS;
 
-const CURRENT_REVISION: &str = "201607";
+const CURRENT_REVISION: &str = "202011";
 
 /// The administrative division
 #[derive(Debug, Clone, PartialEq, Eq, Hash)]
