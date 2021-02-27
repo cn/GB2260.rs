@@ -7,7 +7,7 @@ use data::DIVISIONS;
 const CURRENT_REVISION: &str = "202011";
 
 /// The administrative division
-#[derive(Debug, Clone, PartialEq, Eq, Hash)]
+#[derive(Copy, Debug, Clone, PartialEq, Eq, Hash)]
 pub struct Division {
     /// The six-digit number of the specific administrative division
     pub code: &'static str,
@@ -126,28 +126,28 @@ mod tests {
 
     #[test]
     fn test_division() {
-        let division = Division::get("110000").unwrap();
-        assert_eq!(division.code, "110000");
-        assert_eq!(division.name, "北京市");
-        assert_eq!(division.revision, "201607");
+        let division = Division::get("440000").unwrap();
+        assert_eq!(division.code, "440000");
+        assert_eq!(division.name, "广东省");
+        assert_eq!(division.revision, "202011");
         assert!(division.is_province());
         assert!(!division.is_prefecture());
         assert!(!division.is_county());
         assert_eq!(division.stack().len(), 1);
 
-        let division = Division::get("110100").unwrap();
-        assert_eq!(division.code, "110100");
-        assert_eq!(division.name, "市辖区");
-        assert_eq!(division.revision, "201607");
+        let division = Division::get("440100").unwrap();
+        assert_eq!(division.code, "440100");
+        assert_eq!(division.name, "广州市");
+        assert_eq!(division.revision, "202011");
         assert!(!division.is_province());
         assert!(division.is_prefecture());
         assert!(!division.is_county());
         assert_eq!(division.stack().len(), 2);
 
-        let division = Division::get("110101").unwrap();
-        assert_eq!(division.code, "110101");
-        assert_eq!(division.name, "东城区");
-        assert_eq!(division.revision, "201607");
+        let division = Division::get("440115").unwrap();
+        assert_eq!(division.code, "440115");
+        assert_eq!(division.name, "南沙区");
+        assert_eq!(division.revision, "202011");
         assert!(!division.is_province());
         assert!(!division.is_prefecture());
         assert!(division.is_county());
