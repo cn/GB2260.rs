@@ -18,7 +18,6 @@ pub struct Division {
 }
 
 impl Division {
-
     /// Return the division of the given code
     pub fn get(code: &str) -> Option<Self> {
         Self::get_by_revision(code, CURRENT_REVISION)
@@ -27,12 +26,10 @@ impl Division {
     /// Return the division of the given code of the given revision
     pub fn get_by_revision(code: &str, revision: &str) -> Option<Self> {
         DIVISIONS.get_entry(revision).and_then(|(rev, data)| {
-            data.get_entry(code).map(|(key, name)| {
-                Division {
-                    code: key,
-                    name: name,
-                    revision: rev,
-                }
+            data.get_entry(code).map(|(key, name)| Division {
+                code: key,
+                name: name,
+                revision: rev,
             })
         })
     }

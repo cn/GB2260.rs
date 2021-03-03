@@ -80376,10 +80376,8 @@ static DIVISIONS_201607: phf::Map<&'static str, &'static str> = ::phf::Map {
 
 static DIVISIONS_201810: phf::Map<&'static str, &'static str> = ::phf::Map {
     key: 3213172566270843353,
-    disps: ::phf::Slice::Static(&[
-    ]),
-    entries: ::phf::Slice::Static(&[
-    ]),
+    disps: ::phf::Slice::Static(&[]),
+    entries: ::phf::Slice::Static(&[]),
 };
 
 static DIVISIONS_201904: phf::Map<&'static str, &'static str> = ::phf::Map {
@@ -88115,13 +88113,7 @@ static DIVISIONS_202011: phf::Map<&'static str, &'static str> = ::phf::Map {
 
 static DIVISIONS_hongkong_201512: phf::Map<&'static str, &'static str> = ::phf::Map {
     key: 732231254413039614,
-    disps: ::phf::Slice::Static(&[
-        (0, 0),
-        (5, 5),
-        (15, 21),
-        (12, 19),
-        (2, 7),
-    ]),
+    disps: ::phf::Slice::Static(&[(0, 0), (5, 5), (15, 21), (12, 19), (2, 7)]),
     entries: ::phf::Slice::Static(&[
         ("810202", "深水埗区"),
         ("810302", "荃湾区"),
@@ -88150,10 +88142,7 @@ static DIVISIONS_hongkong_201512: phf::Map<&'static str, &'static str> = ::phf::
 
 static DIVISIONS_macao_201512: phf::Map<&'static str, &'static str> = ::phf::Map {
     key: 5562424625550093841,
-    disps: ::phf::Slice::Static(&[
-        (1, 3),
-        (2, 0),
-    ]),
+    disps: ::phf::Slice::Static(&[(1, 3), (2, 0)]),
     entries: ::phf::Slice::Static(&[
         ("820100", "澳门市"),
         ("820202", "圣方济各堂区"),
@@ -88168,39 +88157,34 @@ static DIVISIONS_macao_201512: phf::Map<&'static str, &'static str> = ::phf::Map
     ]),
 };
 
-pub static DIVISIONS: phf::Map<&'static str, &'static phf::Map<&'static str, &'static str>> = ::phf::Map {
-    key: 732231254413039614,
-    disps: ::phf::Slice::Static(&[
-        (0, 0),
-        (6, 3),
-        (0, 3),
-        (2, 14),
-        (16, 9),
-    ]),
-    entries: ::phf::Slice::Static(&[
-        ("201509", &DIVISIONS_201509),
-        ("200512", &DIVISIONS_200512),
-        ("200812", &DIVISIONS_200812),
-        ("200409", &DIVISIONS_200409),
-        ("200506", &DIVISIONS_200506),
-        ("200212", &DIVISIONS_200212),
-        ("201010", &DIVISIONS_201010),
-        ("200712", &DIVISIONS_200712),
-        ("hongkong-201512", &DIVISIONS_hongkong_201512),
-        ("201810", &DIVISIONS_201810),
-        ("201607", &DIVISIONS_201607),
-        ("201410", &DIVISIONS_201410),
-        ("macao-201512", &DIVISIONS_macao_201512),
-        ("201210", &DIVISIONS_201210),
-        ("201110", &DIVISIONS_201110),
-        ("200412", &DIVISIONS_200412),
-        ("200612", &DIVISIONS_200612),
-        ("201904", &DIVISIONS_201904),
-        ("202011", &DIVISIONS_202011),
-        ("200912", &DIVISIONS_200912),
-        ("200306", &DIVISIONS_200306),
-        ("200312", &DIVISIONS_200312),
-        ("201308", &DIVISIONS_201308),
-        ("200403", &DIVISIONS_200403),
-    ]),
-};
+pub static DIVISIONS: phf::Map<&'static str, &'static phf::Map<&'static str, &'static str>> =
+    ::phf::Map {
+        key: 732231254413039614,
+        disps: ::phf::Slice::Static(&[(0, 0), (6, 3), (0, 3), (2, 14), (16, 9)]),
+        entries: ::phf::Slice::Static(&[
+            ("201509", &DIVISIONS_201509),
+            ("200512", &DIVISIONS_200512),
+            ("200812", &DIVISIONS_200812),
+            ("200409", &DIVISIONS_200409),
+            ("200506", &DIVISIONS_200506),
+            ("200212", &DIVISIONS_200212),
+            ("201010", &DIVISIONS_201010),
+            ("200712", &DIVISIONS_200712),
+            ("hongkong-201512", &DIVISIONS_hongkong_201512),
+            ("201810", &DIVISIONS_201810),
+            ("201607", &DIVISIONS_201607),
+            ("201410", &DIVISIONS_201410),
+            ("macao-201512", &DIVISIONS_macao_201512),
+            ("201210", &DIVISIONS_201210),
+            ("201110", &DIVISIONS_201110),
+            ("200412", &DIVISIONS_200412),
+            ("200612", &DIVISIONS_200612),
+            ("201904", &DIVISIONS_201904),
+            ("202011", &DIVISIONS_202011),
+            ("200912", &DIVISIONS_200912),
+            ("200306", &DIVISIONS_200306),
+            ("200312", &DIVISIONS_200312),
+            ("201308", &DIVISIONS_201308),
+            ("200403", &DIVISIONS_200403),
+        ]),
+    };
