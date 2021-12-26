@@ -4,7 +4,7 @@ mod data;
 
 use data::DIVISIONS;
 
-const CURRENT_REVISION: &str = "202011";
+const CURRENT_REVISION: &str = "202012";
 
 /// The administrative division
 #[derive(Copy, Debug, Clone, PartialEq, Eq, Hash)]
@@ -126,7 +126,7 @@ mod tests {
         let division = Division::get("440000").unwrap();
         assert_eq!(division.code, "440000");
         assert_eq!(division.name, "广东省");
-        assert_eq!(division.revision, "202011");
+        assert_eq!(division.revision, "202012");
         assert!(division.is_province());
         assert!(!division.is_prefecture());
         assert!(!division.is_county());
@@ -135,7 +135,7 @@ mod tests {
         let division = Division::get("440100").unwrap();
         assert_eq!(division.code, "440100");
         assert_eq!(division.name, "广州市");
-        assert_eq!(division.revision, "202011");
+        assert_eq!(division.revision, "202012");
         assert!(!division.is_province());
         assert!(division.is_prefecture());
         assert!(!division.is_county());
@@ -144,7 +144,7 @@ mod tests {
         let division = Division::get("440115").unwrap();
         assert_eq!(division.code, "440115");
         assert_eq!(division.name, "南沙区");
-        assert_eq!(division.revision, "202011");
+        assert_eq!(division.revision, "202012");
         assert!(!division.is_province());
         assert!(!division.is_prefecture());
         assert!(division.is_county());
@@ -153,5 +153,29 @@ mod tests {
         let division_search = Division::search("110000").unwrap();
         let division_get = Division::get("110000").unwrap();
         assert_eq!(division_search, division_get);
+    }
+
+    #[test]
+    fn test_search_divison() {
+        let division = Division::search("440181").unwrap();
+        assert_eq!(division.code, "440181");
+        assert_eq!(division.name, "番禺市");
+        assert_eq!(division.revision, "199912");
+        assert!(!division.is_province());
+        assert!(!division.is_prefecture());
+        assert!(division.is_county());
+        assert_eq!(division.stack().len(), 3);
+    }
+
+    #[test]
+    fn test_get_by_revision() {
+        let division = Division::get_by_revision("440181", "199512").unwrap();
+        assert_eq!(division.code, "440181");
+        assert_eq!(division.name, "番禺市");
+        assert_eq!(division.revision, "199512");
+        assert!(!division.is_province());
+        assert!(!division.is_prefecture());
+        assert!(division.is_county());
+        assert_eq!(division.stack().len(), 3);
     }
 }
