@@ -41,13 +41,13 @@ fn main() {
     println!("#![allow(non_upper_case_globals)]\n");
     println!("use phf;\n");
     let path: PathBuf = data_dir.into();
-    let stats_codes =
-        generate_by_dir(path.join("stats").as_path()).expect("generate from stats failed");
+    let mca_codes =
+        generate_by_dir(path.join("mca").as_path()).expect("generate from mca failed");
     let contrib_codes =
         generate_by_dir(path.join("contrib").as_path()).expect("generate from contrib failed");
     print!("pub static DIVISIONS: phf::Map<&'static str, &'static phf::Map<&'static str, &'static str>> = ");
     let mut map = phf_codegen::Map::new();
-    for code in &stats_codes {
+    for code in &mca_codes {
         let code_name = code.replace("-", "_");
         map.entry(&code[..], &format!("&DIVISIONS_{}", code_name));
     }
